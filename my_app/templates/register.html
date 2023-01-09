@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+    body {
+      box-sizing: border-box;
+      background-color: #1f5388;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: white;
+    }
+    .container__title {
+      position: absolute;
+      left: 550px;
+      top: 170px
+    }
+    .form {
+      display: block;
+    .form-input {
+    padding: 40px;
+    }
+    }
+    .form-label {
+      margin-right: 20px;
+    }
+    .form__button {
+        float: right;
+        padding: 10px;
+        border-radius: 20px;
+        border: none;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="container__title">Регистрация</h1>
+    <form class="form" method="post">
+      {% csrf_token %} {% for f in form %}
+      <p>
+        <label class="form-label" for="{{ f.id_for_label }}">{{f.label}}</label
+        >{{f}}
+      </p>
+      <div class="form-error">{{ f.errors }}</div>
+      {% endfor %}
+      <button class="form__button" type="submit">Регистрация</button>
+    </form>
+    </div>
+
+  </body>
+</html>
